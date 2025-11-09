@@ -1,23 +1,17 @@
 import sqlite3
-import logging
 from CaesarCipher import Encryption
-
-log = logging.FileHandler(r'dbankite3\dbankite3.logs')
 
 # Database Connection
 connection = sqlite3.connect(r'dbankite3\db\dbankite3.sqlite3')
-
 
 class dbankite3ServerQL:
 
     cursor = connection.cursor()
 
     def __init__(self):
-        # self.cursor = connection.cursor()
         ...
 
     def close_connection(self):
-        self.cursor.close()
         connection.close()
 
     class table_definitions:
@@ -30,8 +24,7 @@ class dbankite3ServerQL:
                 CREATE TABLE IF NOT EXISTS users (
                     username VARCHAR(50) PRIMARY KEY,
                     password VARCHAR(25) NOT NULL,
-                    balance REAL DEFAULT 0,
-                    recovery_code CHAR(6)
+                    balance REAL DEFAULT 0
                 )
             ''')
             connection.commit()
@@ -39,9 +32,8 @@ class dbankite3ServerQL:
         def define_administrator_table(self) -> None:
             self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS administrators (
-                    admin_name VARCHAR(50) PRIMARY KEY,
-                    admin_password VARCHAR(25) NOT NULL
-                )
+                    username VARCHAR(50) PRIMARY KEY,
+                    password VARCHAR(25) NOT NULL)
             ''')
             connection.commit()
 
@@ -57,6 +49,65 @@ class dbankite3ServerQL:
                 SELECT password FROM users WHERE username = ?
             ''', (self.username,))
             return self.cursor.fetchone()[0] == Encryption(self.password, shift = 8, alterNumbers = True).encrypt()
+
+    class traversal:
+
+        def __init__(self) -> None:
+            self.cursor = dbankite3ServerQL.cursor
+
+        def isUserExist(self, username: str) -> bool:
+            self.cursor.execute('''
+                SELECT COUNT(*) FROM users WHERE username = ?
+            ''', (username,))
+            return self.cursor.fetchone()[0] > 0
+
+    class registration:
+
+        def __init__(self, username: str, password: str) -> None:
+            self.cursor = dbankite3ServerQL.cursor
+            self.username = username
+            self.password = password
+
+        def register_user(self) -> bool:
+            try:
+                self.cursor.execute('''
+                    INSERT INTO users (username, password)
+                    VALUES (?, ?)
+                ''', (
+                    self.username,
+                    Encryption(self.password, shift = 8, alterNumbers = True).encrypt(),
+                ))
+                connection.commit()
+                return True
+            except sqlite3.IntegrityError:
+                return False
+    
+    class accountactions:
+
+        def __init__(self) -> None:
+            self.cursor = dbankite3ServerQL.cursor
+
+        def change_password(self, username: str, new_password: str) -> bool:
+            password: str = Encryption(new_password, shift = 8, alterNumbers = True).encrypt()
+            self.cursor.execute('''
+                UPDATE users SET password = ? WHERE username = ?
+            ''', (password, username))
+            connection.commit()
+            return self.cursor.rowcount > 0
+        
+        def change_username(self, old_username: str, new_username: str) -> bool:
+            self.cursor.execute('''
+                UPDATE users SET username = ? WHERE username = ?
+            ''', (new_username, old_username))
+            connection.commit()
+            return self.cursor.rowcount > 0
+        
+        def delete_account(self, username: str) -> bool:
+            self.cursor.execute('''
+                DELETE FROM users WHERE username = ?
+            ''', (username,))
+            connection.commit()
+            return self.cursor.rowcount > 0
 
     class transactions:
 
@@ -83,7 +134,15 @@ class dbankite3ServerQL:
             ''', (amount, username))
             connection.commit()
             return self.cursor.rowcount > 0
-    
+        
+        def transfer(self, _from: str, _to: str, amount: float) -> bool:
+            self.cursor.execute('''
+                UPDATE users SET balance = balance - ? WHERE username = ?;
+                UPDATE users SET balance = balance + ? WHERE username = ?
+            ''', (amount, _from, amount, _to))
+            connection.commit()
+            return self.cursor.rowcount > 0
+            
     class administrator:
 
         def __init__(self) -> None:
@@ -95,3 +154,4 @@ class dbankite3ServerQL:
             ''', (admin_name,))
 
             return self.cursor.fetchone()[0] == Encryption(admin_password, shift = 53, alterNumbers = True).encrypt()
+        
