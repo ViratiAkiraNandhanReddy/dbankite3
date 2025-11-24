@@ -10,3 +10,18 @@ __ascii_art__ = r'''
  \_______/|_______/  \_______/|__/  |__/|__/  \__/|__/   \___/   \_______/ \______/ 
                                                                                     
  '''
+
+from .dbankite3ServerQL import dbankite3ServerQL
+
+if not dbankite3ServerQL.table_exists():
+    
+    print('\n\033[1;31m ~ NO DATABASE FOUND IN YOUR SERVER\033[0m\n')
+    _ = input('DO YOU WANT TO INITIALIZE DATABASE <YES/NO> : ')
+    
+    match _:
+        case 'YES':
+            dbankite3ServerQL.table_definitions().define_user_table()
+            dbankite3ServerQL.table_definitions().define_administrator_table()
+        case _:
+            print('\ndbankite3: EXITING...\n')
+            exit()

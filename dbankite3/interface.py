@@ -6,7 +6,6 @@ class UserInterface:
 
         def __init__(self) -> None:
 
-
             self.username = input("USERNAME: ")
 
             if not self.username:
@@ -44,7 +43,7 @@ class UserInterface:
 7. CHANGE USERNAME
 8. LOGOUT
                       \033[0m''')
-                _ = input("\033[2m~\033[0m \033[1;32m$\033[0m\033[33mdbankite3 \033[2m:\033[0m ACTION [1-8] \033[34m>>\033[0m " ) ; print("\033c")
+                _ = input("\033[2m~\033[0m \033[1;32m$\033[0m\033[33mdbankite3 \033[2m:\033[0m ACTION [1-8] \033[34m>>\033[0m ") ; print("\033c")
 
                 match _:
                     case '1':
@@ -89,7 +88,7 @@ class UserInterface:
         def withdraw(self) -> None:
             amount = float(input('\nENTER AMOUNT: \033[1;33m$ ')) ; print('\033[0m')
             _ = dbankite3ServerQL.transactions().withdraw(self.username, amount)
-            print(print("\n\033[1;32mWITHDRAW SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mWITHDRAW UNSUCCESSFUL!\033[0m\n"))
+            print("\n\033[1;32mWITHDRAW SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mWITHDRAW UNSUCCESSFUL!\033[0m\n")
         
         def transfer(self) -> None:
             amount = float(input('\nENTER AMOUNT: \033[1;33m$ ')) ; print('\033[0m')
@@ -101,7 +100,7 @@ class UserInterface:
                 return
             
             _ = dbankite3ServerQL.transactions().transfer(self.username, _to, amount)
-            print(print("\n\033[1;32mTRANSFER SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mTRANSFER UNSUCCESSFUL!\033[0m\n"))
+            print("\n\033[1;32mTRANSFER SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mTRANSFER UNSUCCESSFUL!\033[0m\n")
 
         def close_account(self) -> bool:
             _ = input(f"\n\033[1;31mUNDONE EVENT: Are you sure? (YES/NO) : \033[0m\n")
@@ -115,3 +114,5 @@ class UserInterface:
             
             print("\n\033[1;32mDELETION UNSUCCESSFUL!\033[0m\n")
             return False
+        
+# UserInterface.login()

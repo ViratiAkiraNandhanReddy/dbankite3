@@ -13,6 +13,13 @@ class dbankite3ServerQL:
 
     def close_connection(self):
         connection.close()
+    
+    @classmethod
+    def table_exists(cls) -> bool:
+        try:
+            dbankite3ServerQL.cursor.execute('SELECT * FROM users')
+            return True
+        except: return False
 
     class table_definitions:
 
@@ -137,9 +144,13 @@ class dbankite3ServerQL:
         
         def transfer(self, _from: str, _to: str, amount: float) -> bool:
             self.cursor.execute('''
-                UPDATE users SET balance = balance - ? WHERE username = ?;
+                UPDATE users SET balance = balance - ? WHERE username = ?
+            ''', (amount, _from))
+            connection.commit()
+
+            self.cursor.execute('''
                 UPDATE users SET balance = balance + ? WHERE username = ?
-            ''', (amount, _from, amount, _to))
+            ''', (amount, _to))
             connection.commit()
             return self.cursor.rowcount > 0
             
