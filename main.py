@@ -9,10 +9,11 @@ from dbankite3.dbankite3ServerQL import dbankite3ServerQL
 
 while True:
     
+    print('\n\033[1;33mREDIRECTING...\033[0m')
     time.sleep(4)
     print("\033c")
     print(f'\033[1;32m{dbankite3.__ascii_art__}\033[0m')
-    print('dbankite3 (tags/v, MMM DD YYYY, HH:MM:SS) - https://github.com/ViratiAkiraNandhanReddy/dbankite3')
+    print('dbankite3 (tags/v, MMM DD YYYY, HH:MM:SS) - https://github.com/ViratiAkiraNandhanReddy/dbankite3\n\n~~ PRESS CTRL + C TO EXIT PROGRAM $')
     
     print('''\033[1;32m
           1. USER LOGIN
@@ -28,15 +29,15 @@ while True:
             
             def un_avoidnesting(username: str) -> bool:
                 if dbankite3ServerQL.traversal().isUserExist(username):
-                    print("\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
+                    print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
                 return True
             
             def pw_avoidnesting(password: str) -> bool:
                 if not password:
-                    print("\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
                 
                 if len(password) < 6:
-                    print("\033[1;31mdbankite3: PASSWORD MUST BE ATLEAST 6 CHARS\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: PASSWORD MUST BE ATLEAST 6 CHARS\033[0m") ; return False
                 
                 return True
             
@@ -56,11 +57,11 @@ while True:
                     print(f'\n#{i} ATTEMPT\'S LEFT')
                     password =  input(f'\nNEW PASSWORD FOR `{username}`: ')
                     
-                    if not pw_avoidnesting(password) :
+                    if not pw_avoidnesting(password.strip()) :
                         continue
                     
                     _ = dbankite3ServerQL.registration(username, password).register_user()
-                    print("\n\033[1;32mSUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m\n")
+                    print("\n\033[1;32mSUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m")
                     break
 
                 else:

@@ -58,13 +58,14 @@ class UserInterface:
                         _ = self.close_account()
                         if _: break
                     case '6':
-                        ...
+                        _ = self.change_passwd()
+                        if _: break
                     case '7':
-                        ...
+                        self.change_username()
                     case '8':
                         break
                     case _:
-                        print()
+                        print('\nINVALID ACTION\n')
 
 
 
@@ -103,7 +104,7 @@ class UserInterface:
             print("\n\033[1;32mTRANSFER SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mTRANSFER UNSUCCESSFUL!\033[0m\n")
 
         def close_account(self) -> bool:
-            _ = input(f"\n\033[1;31mUNDONE EVENT: Are you sure? (YES/NO) : \033[0m\n")
+            _ = input(f"\n\033[1;31mUNDONE EVENT: Are you sure? (YES/NO) : \033[0m")
             if _ == 'YES':
                 _password = input("\nENTER PASSWORD TO CONFIRM: ")
                 
@@ -115,4 +116,60 @@ class UserInterface:
             print("\n\033[1;32mDELETION UNSUCCESSFUL!\033[0m\n")
             return False
         
-# UserInterface.login()
+        def change_passwd(self) -> bool:
+
+            def pw_avoidnesting(password: str) -> bool:
+                
+                if not password:
+                    print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
+                
+                if len(password) < 6:
+                    print("\n\033[1;31mdbankite3: PASSWORD MUST BE ATLEAST 6 CHARS\033[0m") ; return False
+
+                return True
+
+            _ = input(f"\n\033[1;31mUNDONE EVENT: Are you sure? (YES/NO) : \033[0m")
+            if _ == 'YES':
+
+                for i in range(5, 0, -1):
+                    
+                    print(f'\n#{i} ATTEMPT\'S LEFT')
+                    newPassword =  input(f'\nENTER NEW PASSWORD : ')
+                    
+                    if not pw_avoidnesting(newPassword.strip()) :
+                        continue
+                    
+                    _ = dbankite3ServerQL.accountactions().change_password(self.username, newPassword)
+                    print("\n\033[1;32mPASSWORD CHANGE SUCCESSFUL!\033[0m" if _ else "\n\033[1;31mPASSWORD CHANGE UNSUCCESSFUL!\033[0m")
+                    return _
+
+            print("\n\033[1;32mPASSWORD CHANGE UNSUCCESSFUL!\033[0m\n")
+            return False
+        
+        def change_username(self) -> None:
+            
+            def un_avoidnesting(username: str) -> bool:
+                if dbankite3ServerQL.traversal().isUserExist(username):
+                    print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
+                return True
+
+            for i in range(5, 0, -1):
+
+                print('** TYPE `EXIT` IN NEW USERNAME TO CANCEL **')
+                newUsername = input('\nNEW USERNAME: ')
+                    
+                print(f'\n#{i} ATTEMPT\'S LEFT')
+                
+                if newUsername == 'EXIT':
+                    break
+
+                if not un_avoidnesting(newUsername) :
+                    continue
+                
+                _ = dbankite3ServerQL.accountactions().change_username(self.username, newUsername)
+                print("\n\033[1;32mUSERNAME CHANGE SUCCESSFUL!\033[0m" if _ else "\n\033[1;31mUSERNAME CHANGE UNSUCCESSFUL!\033[0m")
+                if _: self.username = newUsername
+
+                return
+            
+            print("\n\033[1;32mUSERNAME CHANGE UNSUCCESSFUL!\033[0m\n")

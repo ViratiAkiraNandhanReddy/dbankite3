@@ -9,7 +9,7 @@ __ascii_art__ = r'''
 |  $$$$$$$| $$$$$$$/|  $$$$$$$| $$  | $$| $$ \  $$| $$  |  $$$$/|  $$$$$$$|  $$$$$$/
  \_______/|_______/  \_______/|__/  |__/|__/  \__/|__/   \___/   \_______/ \______/ 
                                                                                     
- '''
+'''
 
 from .dbankite3ServerQL import dbankite3ServerQL
 
@@ -23,5 +23,5 @@ if not dbankite3ServerQL.table_exists():
             dbankite3ServerQL.table_definitions().define_user_table()
             dbankite3ServerQL.table_definitions().define_administrator_table()
         case _:
-            print('\ndbankite3: EXITING...\n')
+            print('\n\033[1;31dbankite3: INITIALIZE DATABASE UNSUCCESSFUL - EXITING...\033[0m')
             exit()
