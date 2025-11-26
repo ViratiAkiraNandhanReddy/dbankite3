@@ -37,10 +37,10 @@ class dbankite3ServerQL:
             connection.commit()
 
         def define_administrator_table(self) -> None:
-            self.cursor.execute('''
+            self.cursor.executescript('''
                 CREATE TABLE IF NOT EXISTS administrators (
-                    username VARCHAR(50) PRIMARY KEY,
-                    password VARCHAR(25) NOT NULL)
+                    password VARCHAR(25));
+                INSERT INTO administrators (password) VALUES ('333333')
             ''')
             connection.commit()
 
@@ -159,10 +159,17 @@ class dbankite3ServerQL:
         def __init__(self) -> None:
             self.cursor = dbankite3ServerQL.cursor
 
-        def authenticate_admin(self, admin_name: str, admin_password: str) -> bool:
+        def authenticate_admin(self, admin_password: str) -> bool:
             self.cursor.execute('''
-                SELECT admin_password FROM administrators WHERE admin_name = ?
-            ''', (admin_name,))
+                SELECT password FROM administrators
+            ''')
 
             return self.cursor.fetchone()[0] == Encryption(admin_password, shift = 53, alterNumbers = True).encrypt()
         
+        def change_password(self, _password) -> bool:
+            password: str = Encryption(_password, shift = 53, alterNumbers = True).encrypt()
+            self.cursor.execute('''
+                UPDATE administrators SET password = ?
+            ''', (password,))
+            connection.commit()
+            return self.cursor.rowcount > 0

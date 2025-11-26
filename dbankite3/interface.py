@@ -31,8 +31,11 @@ class UserInterface:
     class actions:
 
         def __init__(self, username: str) -> None:
+            
             self.username = username
+            
             while True:
+
                 print('''\033[34m
 1. BALANCE
 2. DEPOSIT
@@ -66,8 +69,6 @@ class UserInterface:
                         break
                     case _:
                         print('\nINVALID ACTION\n')
-
-
 
         def balance(self) -> None:
             balance = dbankite3ServerQL.transactions().balance_inquiry(self.username)
