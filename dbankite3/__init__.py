@@ -12,6 +12,7 @@ __ascii_art__ = r'''
 '''
 
 from .dbankite3ServerQL import dbankite3ServerQL
+from datetime import datetime
 
 if not dbankite3ServerQL.table_exists():
     
@@ -48,3 +49,15 @@ if not dbankite3ServerQL.table_exists():
         case _:
             print('\n\033[1;31dbankite3: INITIALIZE DATABASE UNSUCCESSFUL - EXITING...\033[0m')
             exit()
+
+currentDateTime = datetime.now()
+time24hrsFormat = int(currentDateTime.strftime('%H'))
+
+if time24hrsFormat >= 0 and time24hrsFormat < 12:
+    Greeting = 'Good morning'
+
+elif time24hrsFormat >= 12 and time24hrsFormat < 16:
+    Greeting = 'Good afternoon'
+
+elif time24hrsFormat >= 16:
+    Greeting = 'Good evening'

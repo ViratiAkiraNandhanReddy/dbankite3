@@ -1,3 +1,4 @@
+from . import Greeting
 from .dbankite3ServerQL import dbankite3ServerQL
 
 class UserInterface:
@@ -33,8 +34,10 @@ class UserInterface:
         def __init__(self, username: str) -> None:
             
             self.username = username
-            
+            query = False
             while True:
+                
+                print(f'\n{Greeting}, {self.username}!\n') if not query else lambda: None
 
                 print('''\033[34m
 1. BALANCE
@@ -69,6 +72,10 @@ class UserInterface:
                         break
                     case _:
                         print('\nINVALID ACTION\n')
+                        query = False
+                        continue
+                    
+                query = True
 
         def balance(self) -> None:
             balance = dbankite3ServerQL.transactions().balance_inquiry(self.username)
@@ -157,9 +164,8 @@ class UserInterface:
             for i in range(5, 0, -1):
 
                 print('** TYPE `EXIT` IN NEW USERNAME TO CANCEL **')
-                newUsername = input('\nNEW USERNAME: ')
-                    
                 print(f'\n#{i} ATTEMPT\'S LEFT')
+                newUsername = input('\nNEW USERNAME: ')
                 
                 if newUsername == 'EXIT':
                     break
