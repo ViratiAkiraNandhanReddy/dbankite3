@@ -1,9 +1,29 @@
+"""User interface components for dbankite3.
+
+This module exposes `UserInterface` which contains interactive
+subclasses for user login and account actions used by the CLI.
+
+Classes
+- `UserInterface.login`: prompts for username/password and authenticates.
+- `UserInterface.actions`: interactive account actions for an authenticated user.
+"""
+
 from . import Greeting
 from .dbankite3ServerQL import dbankite3ServerQL
 
 class UserInterface:
+    """Top-level container for CLI user interaction helpers.
+
+    The nested classes implement specific UI flows: `login` to sign in
+    and `actions` to perform account operations.
+    """
 
     class login:
+        """Prompt for username and password and authenticate the user.
+
+        On successful authentication this class launches
+        `UserInterface.actions` for the authenticated user.
+        """
 
         def __init__(self) -> None:
 
@@ -30,6 +50,11 @@ class UserInterface:
             UserInterface.actions(self.username)
 
     class actions:
+        """Interactive menu for an authenticated user's account actions.
+
+        Methods implement balance inquiry, deposit, withdraw, transfer,
+        account closure, password change, and username change flows.
+        """
 
         def __init__(self, username: str) -> None:
             
@@ -78,6 +103,11 @@ class UserInterface:
                 query = True
 
         def balance(self) -> None:
+            """Print the current balance for the user.
+
+            Uses the database transactions API to fetch the balance and
+            prints it with color-coded severity.
+            """
             balance = dbankite3ServerQL.transactions().balance_inquiry(self.username)
 
             if balance >= 1000: # green
@@ -90,16 +120,23 @@ class UserInterface:
                 print(f"\nBALANCE:\033[1;31m $ {balance}\033[0m\n")
         
         def deposit(self) -> None:
+            """Prompt for an amount and deposit it into the user's account."""
             amount = float(input('\nENTER AMOUNT: \033[1;32m$ ')) ; print('\033[0m')
             _ = dbankite3ServerQL.transactions().deposit(self.username, amount)
             print("\n\033[1;32mDEPOSIT SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mDEPOSIT UNSUCCESSFUL!\033[0m\n")
 
         def withdraw(self) -> None:
+            """Prompt for an amount and withdraw it from the user's account."""
             amount = float(input('\nENTER AMOUNT: \033[1;33m$ ')) ; print('\033[0m')
             _ = dbankite3ServerQL.transactions().withdraw(self.username, amount)
             print("\n\033[1;32mWITHDRAW SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mWITHDRAW UNSUCCESSFUL!\033[0m\n")
         
         def transfer(self) -> None:
+            """Transfer funds from the current user to another user.
+
+            Prompts for recipient username and amount, and performs checks
+            before attempting the transfer.
+            """
             amount = float(input('\nENTER AMOUNT: \033[1;33m$ ')) ; print('\033[0m')
             _to = input('\nSEND TO <enter username> : \033[1;33m ') ; print('\033[0m')
             _ = dbankite3ServerQL.traversal().isUserExist(_to)
@@ -112,6 +149,10 @@ class UserInterface:
             print("\n\033[1;32mTRANSFER SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mTRANSFER UNSUCCESSFUL!\033[0m\n")
 
         def close_account(self) -> bool:
+            """Prompt to confirm and delete the current user's account.
+
+            Returns True when the account was deleted successfully.
+            """
             _ = input(f"\n\033[1;31mUNDONE EVENT: Are you sure? (YES/NO) : \033[0m")
             if _ == 'YES':
                 _password = input("\nENTER PASSWORD TO CONFIRM: ")
@@ -125,9 +166,16 @@ class UserInterface:
             return False
         
         def change_passwd(self) -> bool:
+            """Change the authenticated user's password after confirmation.
+
+            Returns True on success.
+            """
 
             def pw_avoidnesting(password: str) -> bool:
-                
+                """Validate a candidate password for a password-change flow.
+
+                Returns True if the password meets minimal length requirements.
+                """
                 if not password:
                     print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
                 
@@ -155,8 +203,10 @@ class UserInterface:
             return False
         
         def change_username(self) -> None:
+            """Change the authenticated user's username after validation."""
             
             def un_avoidnesting(username: str) -> bool:
+                """Return True if the proposed username is not already taken."""
                 if dbankite3ServerQL.traversal().isUserExist(username):
                     print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
                 return True

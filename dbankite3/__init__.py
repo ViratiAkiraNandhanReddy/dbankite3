@@ -1,3 +1,13 @@
+"""dbankite3 package initializer.
+
+Exposes the database helper `dbankite3ServerQL` and configures
+initial database setup when no database is found. Also provides
+time-based greeting helpers used by the CLI.
+
+This module runs a one-time initialization flow when the package
+is imported and no database file is present.
+"""
+
 __ascii_art__ = r'''
 
        /$$ /$$                           /$$       /$$   /$$                /$$$$$$ 
@@ -26,6 +36,14 @@ if not dbankite3ServerQL.table_exists():
             dbankite3ServerQL.table_definitions().define_administrator_table()
 
             def pw_avoidnesting(password: str) -> bool:
+                """Validate an administrator password during initialization.
+
+                Args:
+                    password: Candidate admin password.
+
+                Returns:
+                    True if password meets minimal requirements, False otherwise.
+                """
                 if not password:
                     print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
                 

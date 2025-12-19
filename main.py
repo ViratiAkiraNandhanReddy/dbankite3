@@ -1,6 +1,16 @@
-'''
+"""dbankite3 command-line entrypoint.
 
-'''
+This module implements the interactive CLI loop used to run dbankite3.
+
+Features
+- Prints ASCII art and a greeting.
+- Provides options to login, register, or perform administrator login.
+
+Usage
+```py
+python main.py
+```
+"""
 
 import dbankite3, time
 from dbankite3.interface import UserInterface
@@ -15,6 +25,8 @@ while True:
     print(f'\033[1;32m{dbankite3.__ascii_art__}\033[0m')
     print('dbankite3 (tags/v, MMM DD YYYY, HH:MM:SS) - https://github.com/ViratiAkiraNandhanReddy/dbankite3\n\n~~ PRESS CTRL + C TO EXIT PROGRAM $')
     
+    print('\n\033[1;31mNOTICE: ' + dbankite3ServerQL.administrator().fetch_notifications() + '\033[0m') if dbankite3ServerQL.administrator().fetch_notifications() else None
+
     print('''\033[1;32m
           1. USER LOGIN
           2. REGISTER USER
@@ -28,11 +40,27 @@ while True:
         case '2':
             
             def un_avoidnesting(username: str) -> bool:
+                """Check whether a username is available.
+
+                Args:
+                    username: Candidate username.
+
+                Returns:
+                    True if username is not present in the database, False otherwise.
+                """
                 if dbankite3ServerQL.traversal().isUserExist(username):
                     print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
                 return True
             
             def pw_avoidnesting(password: str) -> bool:
+                """Validate a candidate password.
+
+                Args:
+                    password: Candidate password string.
+
+                Returns:
+                    True if password meets basic requirements, False otherwise.
+                """
                 if not password:
                     print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m") ; return False
                 
