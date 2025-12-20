@@ -65,7 +65,7 @@ if not dbankite3ServerQL.table_exists():
                 break
             
         case _:
-            print('\n\033[1;31dbankite3: INITIALIZE DATABASE UNSUCCESSFUL - EXITING...\033[0m')
+            print('\n\033[1;31mdbankite3: INITIALIZE DATABASE UNSUCCESSFUL - EXITING...\033[0m')
             exit()
 
 currentDateTime = datetime.now()

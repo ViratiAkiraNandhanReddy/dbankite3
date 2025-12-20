@@ -49,7 +49,7 @@ while True:
                     True if username is not present in the database, False otherwise.
                 """
                 if dbankite3ServerQL.traversal().isUserExist(username):
-                    print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m") ; return False
                 return True
             
             def pw_avoidnesting(password: str) -> bool:

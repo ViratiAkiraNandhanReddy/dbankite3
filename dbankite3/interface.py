@@ -208,7 +208,7 @@ class UserInterface:
             def un_avoidnesting(username: str) -> bool:
                 """Return True if the proposed username is not already taken."""
                 if dbankite3ServerQL.traversal().isUserExist(username):
-                    print("\n\033[1;31dbankite3: USER ALREADY EXIST\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m") ; return False
                 return True
 
             for i in range(5, 0, -1):

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dbankite3 — Modern Banking System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">dbankite3</div>
+      <nav class="nav-menu">
+        <a href="#overview" class="nav-link">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#quickstart" class="nav-link">Quickstart</a>
+        <a href="#tech" class="nav-link">Tech</a>
+        <a href="#author" class="nav-link">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#quickstart">Quickstart</a>
+        <a href="#workflow">How It Works</a>
+        <a href="#tech">Tech Stack</a>
+        <a href="#schema">Database</a>
+        <a href="#install">Installation</a>
+        <a href="#dev">Development</a>
+        <a href="#author">Author</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <section id="overview" class="hero">
+      <div class="hero-content">
+        <h1>dbankite3</h1>
+        <p class="tagline">A banking system demonstrating professional backend architecture.</p>
+        <p class="description">Build robust financial applications with real-world patterns: account management, transaction handling, and persistent data storage.</p>
+        <div class="cta-buttons">
+          <a href="#quickstart" class="btn btn-primary">Get Started</a>
+          <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank" class="btn btn-secondary">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features-section">
+      <h2>✨ Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏦</div>
+          <h3>Account Management</h3>
+          <p>Create, read, update, and delete bank accounts with full CRUD operations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Transactions</h3>
+          <p>Handle deposits and withdrawals with real-time balance updates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>Persistent Storage</h3>
+          <p>SQLite3 database ensures your data survives application restarts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>Data Integrity</h3>
+          <p>Foreign keys and constraints maintain database consistency.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h3>CLI Interface</h3>
+          <p>Interactive command-line experience with clear user feedback.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Learning Focused</h3>
+          <p>Clean, documented code perfect for understanding backend patterns.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+      <h2>🧠 How It Works</h2>
+      <div class="workflow-diagram">
+        <div class="workflow-step">
+          <div class="step-number">1</div>
+          <div class="step-label">User Input</div>
+          <p>Interactive CLI prompts</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-number">2</div>
+          <div class="step-label">Validation</div>
+          <p>Input sanitization</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-number">3</div>
+          <div class="step-label">Processing</div>
+          <p>Business logic</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-number">4</div>
+          <div class="step-label">Storage</div>
+          <p>SQLite persistence</p>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-number">5</div>
+          <div class="step-label">Response</div>
+          <p>User feedback</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="quickstart-section">
+      <h2>🚀 Quickstart</h2>
+      <ol class="quickstart-steps">
+        <li>
+          <strong>Clone the repository</strong>
+          <code>git clone https://github.com/ViratiAkiraNandhanReddy/dbankite3.git</code>
+        </li>
+        <li>
+          <strong>Navigate to directory</strong>
+          <code>cd dbankite3</code>
+        </li>
+        <li>
+          <strong>Install dependencies</strong>
+          <code>pip install -r requirements.txt</code>
+        </li>
+        <li>
+          <strong>Run the application</strong>
+          <code>python main.py</code>
+        </li>
+      </ol>
+      <div class="note">
+        <strong>💡 Tip:</strong> On first run, the application automatically creates the SQLite database with required tables.
+      </div>
+    </section>
+
+    <section id="tech" class="tech-section">
+      <h2>🛠 Tech Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">1</div>
+          <div class="tech-details">
+            <h3>Python 3.12+</h3>
+            <p>Clean, readable, and beginner-friendly backend language with excellent database support.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">2</div>
+          <div class="tech-details">
+            <h3>SQLite3</h3>
+            <p>Lightweight, file-based relational database. No server setup required—perfect for learning.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">3</div>
+          <div class="tech-details">
+            <h3>CLI Interface</h3>
+            <p>Command-line interface for user interaction. Easy to extend with web frameworks later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schema" class="schema-section">
+      <h2>🗄️ Database Schema</h2>
+      <p>dbankite3 uses a simple but effective relational design:</p>
+      <div class="schema-container">
+        <div class="schema-table">
+          <h3>users</h3>
+          <table class="schema-table-content">
+            <tr><td><strong>username</strong></td><td>VARCHAR(50) PRIMARY KEY</td></tr>
+            <tr><td><strong>password</strong></td><td>VARCHAR(25) NOT NULL</td></tr>
+            <tr><td><strong>balance</strong></td><td>REAL DEFAULT 0</td></tr>
+          </table>
+        </div>
+        <div class="schema-table">
+          <h3>administrator</h3>
+          <table class="schema-table-content">
+            <tr><td><strong>password</strong></td><td>VARCHAR(25)</td></tr>
+            <tr><td><strong>notices</strong></td><td>TEXT</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="installation" class="installation-section">
+      <h2>Installation</h2>
+      <p>You can download the latest release of dbankite3 from our GitHub Releases page:</p>
+      <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3/releases" target="_blank">Download dbankite3 Releases</a>
+    </section>
+
+    <section id="dev" class="dev-section">
+      <h2>🧩 Development & Architecture</h2>
+      <h3>Project Structure</h3>
+      <pre><code>dbankite3/
+├── main.py                    # Application entry point
+├── requirements.txt           # Dependencies
+├── dbankite3/
+│   ├── __init__.py
+│   ├── interface.py           # CLI user interface
+│   ├── administrator.py       # Business logic
+│   ├── dbankite3ServerQL.py   # Database operations
+│   └── __pycache__/
+├── db/
+│   └── dbankite3.sqlite3      # Database file (auto-created)
+└── docs/
+    ├── index.html             # This documentation
+    ├── style.css
+    └── script.js</code></pre>
+    </section>
+
+    <section id="author" class="author-section">
+      <h2>👨‍💻 Author & Community</h2>
+      <div class="author-card">
+        <img class="author-avatar" src="https://avatars.githubusercontent.com/ViratiAkiraNandhanReddy?s=200" alt="Author avatar">
+        <div class="author-info">
+          <h3>VIRATI AKIRANANDHAN REDDY ~ ViratiAkiraNandhanReddy</h3>
+          <div class="social-links">
+            <a href="https://github.com/ViratiAkiraNandhanReddy" target="_blank" class="social-link">GitHub</a>
+            <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank" class="social-link">Repository</a>
+            <a href="https://www.linkedin.com/in/viratiakiranandhanreddy" target="_blank" class="social-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="contribute-box">
+        <h3>🤝 Want to Contribute?</h3>
+        <p>Whether it's bug fixes, new features, or documentation improvements, your help makes this project better.</p>
+        <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3/issues" target="_blank" class="btn btn-secondary">Open Issues</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 dbankite3. Built with ❤️ for learning and development.</p>
+      <p><a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank">View on GitHub</a></p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
