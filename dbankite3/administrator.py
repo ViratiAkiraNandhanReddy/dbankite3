@@ -148,17 +148,17 @@ class administrator:
             password = input('ENTER ADMINISTRATOR PASSWORD TO CONFIRM: ')
             
             if not dbankite3ServerQL.administrator().authenticate_admin(password):
-                print("\n\033[1;31mdbankite3: INVALID PASSWORD - ACCOUNT NOT REMOVED\033[0m\n")
+                print("\n\033[1;31mdbankite3: INVALID PASSWORD - ACCOUNT NOT REMOVED\033[0m")
                 return
             
             _ = dbankite3ServerQL.accountactions().delete_account(username)
-            print("\n\033[1;32mACCOUNT REMOVED SUCCESSFULLY!\033[0m\n" if _ else "\n\033[1;31mACCOUNT REMOVAL FAILED!\033[0m\n")
+            print("\n\033[1;32mACCOUNT REMOVED SUCCESSFULLY!\033[0m" if _ else "\n\033[1;31mACCOUNT REMOVAL FAILED!\033[0m")
 
         def delete_all_user_accounts(self) -> None:
             """Delete all user accounts from the database after admin confirmation."""
             _password = input('ENTER ADMINISTRATOR PASSWORD TO CONFIRM: ')
             if not dbankite3ServerQL.administrator().authenticate_admin(_password):
-                print("\n\033[1;31mdbankite3: INVALID PASSWORD - ACTION ABORTED\033[0m\n")
+                print("\n\033[1;31mdbankite3: INVALID PASSWORD - ACTION ABORTED\033[0m")
                 return
             _ = dbankite3ServerQL.administrator().delete_all_user_accounts()
-            print("\n\033[1;32mALL USER ACCOUNTS DELETED SUCCESSFULLY!\033[0m\n" if _ else "\n\033[1;31mACTION FAILED!\033[0m\n")
+            print("\n\033[1;32mALL USER ACCOUNTS DELETED SUCCESSFULLY!\033[0m" if _ else "\n\033[1;31mACTION FAILED!\033[0m")

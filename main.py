@@ -23,7 +23,7 @@ while True:
     time.sleep(4)
     print("\033c")
     print(f'\033[1;32m{dbankite3.__ascii_art__}\033[0m')
-    print('dbankite3 (tags/v, MMM DD YYYY, HH:MM:SS) - https://github.com/ViratiAkiraNandhanReddy/dbankite3\n\n~~ PRESS CTRL + C TO EXIT PROGRAM $')
+    print('dbankite3 (tags/v1.0, DEC-20-2025, 23:45:53) - https://github.com/ViratiAkiraNandhanReddy/dbankite3\n\n~~ PRESS CTRL + C TO EXIT PROGRAM $')
     
     print('\n\033[1;31mNOTICE: ' + dbankite3ServerQL.administrator().fetch_notifications() + '\033[0m') if dbankite3ServerQL.administrator().fetch_notifications() else None
 
@@ -49,7 +49,11 @@ while True:
                     True if username is not present in the database, False otherwise.
                 """
                 if dbankite3ServerQL.traversal().isUserExist(username):
-                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m\n") ; return False
+                
+                if not username:
+                    print("\n\033[1;31mdbankite3: USERNAME CANNOT BE EMPTY\033[0m\n") ; return False
+                
                 return True
             
             def pw_avoidnesting(password: str) -> bool:
@@ -77,7 +81,7 @@ while True:
                 if username == 'EXIT':
                     break
 
-                if not un_avoidnesting(username) :
+                if not un_avoidnesting(username.strip()) :
                     continue
                 
                 for i in range(5, 0, -1):
@@ -89,7 +93,7 @@ while True:
                         continue
                     
                     _ = dbankite3ServerQL.registration(username, password).register_user()
-                    print("\n\033[1;32mSUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m")
+                    print("\n\033[1;32mSUCCESSFUL!\033[0m" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m")
                     break
 
                 else:

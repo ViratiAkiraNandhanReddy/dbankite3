@@ -30,21 +30,21 @@ class UserInterface:
             self.username = input("USERNAME: ")
 
             if not self.username:
-                print("\033[1;31mdbankite3: USERNAME CANNOT BE EMPTY\033[0m")
+                print("\n\033[1;31mdbankite3: USERNAME CANNOT BE EMPTY\033[0m")
                 return 
 
             if not dbankite3ServerQL.traversal().isUserExist(self.username):
-                print("\033[1;31mdbankite3: USER DOES NOT EXIST\033[0m")
+                print("\n\033[1;31mdbankite3: USER DOES NOT EXIST\033[0m")
                 return
             
             self.password = input("PASSWORD: ")
 
             if not self.password:
-                print("\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m")
+                print("\n\033[1;31mdbankite3: PASSWORD CANNOT BE EMPTY\033[0m")
                 return
 
             if not dbankite3ServerQL.authentication(self.username, self.password).authenticate_password():
-                print("\033[1;31mdbankite3: INVALID PASSWORD\033[0m")
+                print("\n\033[1;31mdbankite3: INVALID PASSWORD\033[0m")
                 return
             
             UserInterface.actions(self.username)
@@ -159,10 +159,10 @@ class UserInterface:
                 
                 if dbankite3ServerQL.authentication(self.username, _password).authenticate_password():
                     _ = dbankite3ServerQL.accountactions().delete_account(self.username)
-                    print("\n\033[1;32mDELETION SUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mDELETION UNSUCCESSFUL!\033[0m\n")
+                    print("\n\033[1;32mDELETION SUCCESSFUL!\033[0m" if _ else "\n\033[1;31mDELETION UNSUCCESSFUL!\033[0m")
                     return _
             
-            print("\n\033[1;32mDELETION UNSUCCESSFUL!\033[0m\n")
+            print("\n\033[1;32mDELETION UNSUCCESSFUL!\033[0m")
             return False
         
         def change_passwd(self) -> bool:
@@ -199,7 +199,7 @@ class UserInterface:
                     print("\n\033[1;32mPASSWORD CHANGE SUCCESSFUL!\033[0m" if _ else "\n\033[1;31mPASSWORD CHANGE UNSUCCESSFUL!\033[0m")
                     return _
 
-            print("\n\033[1;32mPASSWORD CHANGE UNSUCCESSFUL!\033[0m\n")
+            print("\n\033[1;32mPASSWORD CHANGE UNSUCCESSFUL!\033[0m")
             return False
         
         def change_username(self) -> None:
@@ -208,7 +208,7 @@ class UserInterface:
             def un_avoidnesting(username: str) -> bool:
                 """Return True if the proposed username is not already taken."""
                 if dbankite3ServerQL.traversal().isUserExist(username):
-                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m") ; return False
+                    print("\n\033[1;31mdbankite3: USER ALREADY EXIST\033[0m\n") ; return False
                 return True
 
             for i in range(5, 0, -1):

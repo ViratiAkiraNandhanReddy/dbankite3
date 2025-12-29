@@ -8,8 +8,9 @@ This module runs a one-time initialization flow when the package
 is imported and no database file is present.
 """
 
-__ascii_art__ = r'''
+__pyinstaller_syntax__ = r""" pyinstaller --noconfirm --onefile --icon="D:\GitHub\dbankite3\favicon.ico" --version-file="D:\GitHub\dbankite3\build.metadata.dbankite3.txt" --add-data "D:\GitHub\dbankite3\dbankite3" "main.py" """
 
+__ascii_art__ = r'''
        /$$ /$$                           /$$       /$$   /$$                /$$$$$$ 
       | $$| $$                          | $$      |__/  | $$               /$$__  $$
   /$$$$$$$| $$$$$$$   /$$$$$$  /$$$$$$$ | $$   /$$ /$$ /$$$$$$    /$$$$$$ |__/  \ $$
@@ -61,7 +62,7 @@ if not dbankite3ServerQL.table_exists():
                     continue
                 
                 _ = dbankite3ServerQL.administrator().change_password(password)
-                print("\n\033[1;32mSUCCESSFUL!\033[0m\n" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m")
+                print("\n\033[1;32mSUCCESSFUL!\033[0m" if _ else "\n\033[1;31mUNSUCCESSFUL!\033[0m")
                 break
             
         case _:

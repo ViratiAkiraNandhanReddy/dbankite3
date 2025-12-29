@@ -11,6 +11,8 @@ All public methods are documented with short Markdown-style docstrings.
 import sqlite3
 from CaesarCipher import Encryption
 
+with open('dbankite3.sqlite3', 'a') as f: pass
+
 # Database Connection
 connection = sqlite3.connect(r'dbankite3\db\dbankite3.sqlite3')
 
