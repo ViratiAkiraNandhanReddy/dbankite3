@@ -1,1 +1,2 @@
-CaesarCipher.extended
+caesarcipher-extended
+mysql-connector-python
