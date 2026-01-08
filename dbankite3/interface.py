@@ -9,7 +9,7 @@ Classes
 """
 
 from . import Greeting
-from .dbankite3ServerQL import dbankite3ServerQL
+from .dbankite3ServerQL.SQLite3 import dbankite3ServerQL
 
 class UserInterface:
     """Top-level container for CLI user interaction helpers.

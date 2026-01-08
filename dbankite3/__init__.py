@@ -22,7 +22,7 @@ __ascii_art__ = r'''
                                                                                     
 '''
 
-from .dbankite3ServerQL import dbankite3ServerQL
+from .dbankite3ServerQL.SQLite3 import dbankite3ServerQL
 from datetime import datetime
 
 if not dbankite3ServerQL.table_exists():

@@ -4,7 +4,7 @@ Provides an interactive administrator panel to inspect users,
 send notices, change admin password, and manage user accounts.
 """
 
-from .dbankite3ServerQL import dbankite3ServerQL
+from .dbankite3ServerQL.SQLite3 import dbankite3ServerQL
 import subprocess, time
 
 class administrator:

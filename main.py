@@ -15,7 +15,7 @@ python main.py
 import dbankite3, time
 from dbankite3.interface import UserInterface
 from dbankite3.administrator import administrator
-from dbankite3.dbankite3ServerQL import dbankite3ServerQL
+from dbankite3.dbankite3ServerQL.SQLite3 import dbankite3ServerQL
 
 while True:
     
