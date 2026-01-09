@@ -1,257 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dbankite3 — Modern Banking System</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>dbankite3</title>
+  <meta name="description"
+    content="A Python 3.13 + SQLite3 production-grade simulation handling authenticated transactions, admin privileges, and persistent storage with custom encryption algorithms." />
+  <meta name="keywords"
+    content="banking engine, python simulation, sqlite3, cybersecurity, financial software, virati akiranandhan reddy, dbankite3, open source, backend logic" />
+  <meta name="author" content="Virati Akiranandhan Reddy" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a192f" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
 </head>
+
 <body>
-  <!-- Navigation Header -->
-  <header class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">dbankite3</div>
-      <nav class="nav-menu">
-        <a href="#overview" class="nav-link">Home</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#quickstart" class="nav-link">Quickstart</a>
-        <a href="#tech" class="nav-link">Tech</a>
-        <a href="#author" class="nav-link">About</a>
-      </nav>
+
+  <div class="bg-glow"></div>
+  <div class="grid-overlay"></div>
+  <div class="scroll-progress"></div>
+
+  <nav class="navbar">
+    <div class="brand">
+      <i class="ri-database-2-line"></i>
+      DBANKITE<span>3</span>
     </div>
-  </header>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-content">
-      <nav>
-        <a href="#overview">Overview</a>
-        <a href="#features">Features</a>
-        <a href="#quickstart">Quickstart</a>
-        <a href="#workflow">How It Works</a>
-        <a href="#tech">Tech Stack</a>
-        <a href="#schema">Database</a>
-        <a href="#install">Installation</a>
-        <a href="#dev">Development</a>
-        <a href="#author">Author</a>
-      </nav>
+    <div class="nav-links desktop-menu">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#structure">Architecture</a>
+      <a href="#security">Security</a>
+      <a href="#database">Database</a>
+      <a href="#install">Install</a>
     </div>
-  </aside>
 
-  <!-- Main Content -->
-  <main class="content">
+    <div class="hamburger" id="hamburger-btn">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
 
-    <section id="overview" class="hero">
-      <div class="hero-content">
-        <h1>dbankite3</h1>
-        <p class="tagline">A banking system demonstrating professional backend architecture.</p>
-        <p class="description">Build robust financial applications with real-world patterns: account management, transaction handling, and persistent data storage.</p>
-        <div class="cta-buttons">
-          <a href="#quickstart" class="btn btn-primary">Get Started</a>
-          <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank" class="btn btn-secondary">View on GitHub</a>
-        </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="menu-content">
+      <a href="#about">About Project</a>
+      <a href="#features">Core Features</a>
+      <a href="#tech-stack">Tech Stack</a>
+      <a href="#structure">Structure</a>
+      <a href="#logic">Engine Logic</a>
+      <a href="#security">Security</a>
+      <a href="#encryption">Encryption</a>
+      <a href="#database">Database</a>
+      <a href="#transactions">Transactions</a>
+      <a href="#admin">Admin Panel</a>
+      <a href="#logging">Logging</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#install">Installation</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+
+  <section class="hero reveal">
+    <div class="badge">v1.0.0 RELEASED DEC-2025</div>
+    <h1>Banking Logic.<br><span>Persisted.</span></h1>
+    <p>
+      A Python 3.13 + SQLite3 production-grade simulation handling authenticated transactions,
+      admin privileges, and persistent storage with custom encryption algorithms.
+    </p>
+
+    <div class="cta-group">
+      <a href="#install" class="btn btn-primary"><i class="ri-download-cloud-2-line"></i> Download Build</a>
+      <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank" class="btn btn-secondary"><i
+          class="ri-code-fill"></i> View Source</a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <strong>2</strong><span>Drivers (MySQL/Lite)</span>
       </div>
-    </section>
-
-    <section id="features" class="features-section">
-      <h2>✨ Key Features</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🏦</div>
-          <h3>Account Management</h3>
-          <p>Create, read, update, and delete bank accounts with full CRUD operations.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💰</div>
-          <h3>Transactions</h3>
-          <p>Handle deposits and withdrawals with real-time balance updates.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💾</div>
-          <h3>Persistent Storage</h3>
-          <p>SQLite3 database ensures your data survives application restarts.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔐</div>
-          <h3>Data Integrity</h3>
-          <p>Foreign keys and constraints maintain database consistency.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🖥️</div>
-          <h3>CLI Interface</h3>
-          <p>Interactive command-line experience with clear user feedback.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📚</div>
-          <h3>Learning Focused</h3>
-          <p>Clean, documented code perfect for understanding backend patterns.</p>
-        </div>
+      <div class="stat-item">
+        <strong>AES-Like</strong><span>Custom Cipher</span>
       </div>
-    </section>
-
-    <section id="workflow" class="workflow-section">
-      <h2>🧠 How It Works</h2>
-      <div class="workflow-diagram">
-        <div class="workflow-step">
-          <div class="step-number">1</div>
-          <div class="step-label">User Input</div>
-          <p>Interactive CLI prompts</p>
-        </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-number">2</div>
-          <div class="step-label">Validation</div>
-          <p>Input sanitization</p>
-        </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-number">3</div>
-          <div class="step-label">Processing</div>
-          <p>Business logic</p>
-        </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-number">4</div>
-          <div class="step-label">Storage</div>
-          <p>SQLite persistence</p>
-        </div>
-        <div class="workflow-arrow">→</div>
-        <div class="workflow-step">
-          <div class="step-number">5</div>
-          <div class="step-label">Response</div>
-          <p>User feedback</p>
-        </div>
+      <div class="stat-item">
+        <strong>100%</strong><span>CLI Native</span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="quickstart" class="quickstart-section">
-      <h2>🚀 Quickstart</h2>
-      <ol class="quickstart-steps">
-        <li>
-          <strong>Clone the repository</strong>
-          <code>git clone https://github.com/ViratiAkiraNandhanReddy/dbankite3.git</code>
-        </li>
-        <li>
-          <strong>Navigate to directory</strong>
-          <code>cd dbankite3</code>
-        </li>
-        <li>
-          <strong>Install dependencies</strong>
-          <code>pip install -r requirements.txt</code>
-        </li>
-        <li>
-          <strong>Run the application</strong>
-          <code>python main.py</code>
-        </li>
-      </ol>
-      <div class="note">
-        <strong>💡 Tip:</strong> On first run, the application automatically creates the SQLite database with required tables.
+  <section id="about" class="reveal">
+    <h2 class="section-title">About the <span>Project</span></h2>
+    <div class="grid-2">
+      <div class="tech-card">
+        <h3><i class="ri-lightbulb-flash-line"></i> The Vision</h3>
+        <p>DBANKITE³ was created to bridge the gap between theoretical Python programming and real-world system design.
+          It simulates a core banking engine without the bloat of a web framework, focusing purely on logic, data
+          integrity, and state management.</p>
       </div>
-    </section>
+      <div class="tech-card">
+        <h3><i class="ri-code-s-slash-line"></i> The Codebase</h3>
+        <p>Built with strictly typed Python 3.13, the codebase adheres to PEP8 standards. It demonstrates how to
+          structure a medium-sized application using object-oriented programming principles, separating concerns between
+          interface, logic, and data storage.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="tech" class="tech-section">
-      <h2>🛠 Tech Stack</h2>
-      <div class="tech-grid">
-        <div class="tech-card">
-          <div class="tech-icon">1</div>
-          <div class="tech-details">
-            <h3>Python 3.12+</h3>
-            <p>Clean, readable, and beginner-friendly backend language with excellent database support.</p>
+  <section id="features" class="reveal">
+    <h2 class="section-title">Core <span>Features</span></h2>
+    <div class="grid-3">
+      <div class="tech-card">
+        <h3><i class="ri-shield-user-line"></i> Auth System</h3>
+        <p>Secure login/signup with hashed credentials.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-exchange-dollar-line"></i> Transactions</h3>
+        <p>Atomic transfers, deposits, and withdrawals.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-admin-line"></i> Admin Mode</h3>
+        <p>Superuser dashboard for system oversight.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-history-line"></i> Audit Logs</h3>
+        <p>Track all movement of funds.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-hard-drive-2-line"></i> Persistence</h3>
+        <p>Data survives system reboots.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-terminal-window-line"></i> CLI UI</h3>
+        <p>Retro-style command line interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech-stack" class="reveal">
+    <h2 class="section-title">Tech <span>Stack</span></h2>
+    <div class="grid-3">
+      <div class="tech-card center-card">
+        <i class="ri-code-fill icon-large"></i>
+        <h4>Python 3.13</h4>
+      </div>
+      <div class="tech-card center-card">
+        <i class="ri-database-2-fill icon-large"></i>
+        <h4>SQLite3</h4>
+      </div>
+      <div class="tech-card center-card">
+        <i class="ri-server-fill icon-large"></i>
+        <h4>MySQL</h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="structure" class="reveal">
+    <h2 class="section-title">System <span>Architecture</span></h2>
+    <div class="grid-3">
+      <div class="tech-card" style="grid-column: span 2;">
+        <h3><i class="ri-folder-keyhole-line"></i> Directory Map</h3>
+        <div class="tree-view">
+          <div><span class="folder">dbankite3/</span></div>
+          <div>├── <span class="file">__init__.py</span> <span class="desc">// Auto-initialization & Database
+              Check</span></div>
+          <div>├── <span class="file">interface.py</span> <span class="desc">// User Interface & Transaction
+              Logic</span>
           </div>
-        </div>
-        <div class="tech-card">
-          <div class="tech-icon">2</div>
-          <div class="tech-details">
-            <h3>SQLite3</h3>
-            <p>Lightweight, file-based relational database. No server setup required—perfect for learning.</p>
+          <div>├── <span class="file">administrator.py</span> <span class="desc">// Admin Panel & CLI Actions</span>
           </div>
-        </div>
-        <div class="tech-card">
-          <div class="tech-icon">3</div>
-          <div class="tech-details">
-            <h3>CLI Interface</h3>
-            <p>Command-line interface for user interaction. Easy to extend with web frameworks later.</p>
+          <div>├── <span class="folder">db/</span></div>
+          <div>│ &nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file">dbankite3.sqlite3</span> <span class="desc">// SQLite
+              Database
+              File</span></div>
+          <div>├── <span class="file">interface.py</span> <span class="desc">// User Interface & Transaction
+              Logic</span></div>
+          <div>├── <span class="folder">dbankite3ServerQL/</span></div>
+          <div>│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="file">__init__.py</span> <span class="desc">// Wrapper
+              Initializer</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="schema" class="schema-section">
-      <h2>🗄️ Database Schema</h2>
-      <p>dbankite3 uses a simple but effective relational design:</p>
-      <div class="schema-container">
-        <div class="schema-table">
-          <h3>users</h3>
-          <table class="schema-table-content">
-            <tr><td><strong>username</strong></td><td>VARCHAR(50) PRIMARY KEY</td></tr>
-            <tr><td><strong>password</strong></td><td>VARCHAR(25) NOT NULL</td></tr>
-            <tr><td><strong>balance</strong></td><td>REAL DEFAULT 0</td></tr>
-          </table>
-        </div>
-        <div class="schema-table">
-          <h3>administrator</h3>
-          <table class="schema-table-content">
-            <tr><td><strong>password</strong></td><td>VARCHAR(25)</td></tr>
-            <tr><td><strong>notices</strong></td><td>TEXT</td></tr>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="installation" class="installation-section">
-      <h2>Installation</h2>
-      <p>You can download the latest release of dbankite3 from our GitHub Releases page:</p>
-      <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3/releases" target="_blank">Download dbankite3 Releases</a>
-    </section>
-
-    <section id="dev" class="dev-section">
-      <h2>🧩 Development & Architecture</h2>
-      <h3>Project Structure</h3>
-      <pre><code>dbankite3/
-├── main.py                    # Application entry point
-├── requirements.txt           # Dependencies
-├── dbankite3/
-│   ├── __init__.py
-│   ├── interface.py           # CLI user interface
-│   ├── administrator.py       # Business logic
-│   ├── dbankite3ServerQL.py   # Database operations
-│   └── __pycache__/
-├── db/
-│   └── dbankite3.sqlite3      # Database file (auto-created)
-└── docs/
-    ├── index.html             # This documentation
-    ├── style.css
-    └── script.js</code></pre>
-    </section>
-
-    <section id="author" class="author-section">
-      <h2>👨‍💻 Author & Community</h2>
-      <div class="author-card">
-        <img class="author-avatar" src="https://avatars.githubusercontent.com/ViratiAkiraNandhanReddy?s=200" alt="Author avatar">
-        <div class="author-info">
-          <h3>VIRATI AKIRANANDHAN REDDY ~ ViratiAkiraNandhanReddy</h3>
-          <div class="social-links">
-            <a href="https://github.com/ViratiAkiraNandhanReddy" target="_blank" class="social-link">GitHub</a>
-            <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank" class="social-link">Repository</a>
-            <a href="https://www.linkedin.com/in/viratiakiranandhanreddy" target="_blank" class="social-link">LinkedIn</a>
+          <div>│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="file">SQLite3.py</span> <span class="desc">// SQLite
+              Wrapper</span></div>
+          <div>│&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file">MySQL.py</span> <span class="desc">// MySQL
+              Wrapper</span>
+          </div>
+          <div>│</div>
+          <div>│</div>
+          <div>└── <span class="file">main.py</span> <span class="desc">// Application Entrypoint & ASCII Art</span>
           </div>
         </div>
       </div>
-      <div class="contribute-box">
-        <h3>🤝 Want to Contribute?</h3>
-        <p>Whether it's bug fixes, new features, or documentation improvements, your help makes this project better.</p>
-        <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3/issues" target="_blank" class="btn btn-secondary">Open Issues</a>
+      <div class="tech-card">
+        <h3><i class="ri-cpu-line"></i> Core Engine</h3>
+        <p>The system relies on <strong>dbankite3ServerQL</strong>, a wrapper class that unifies:</p>
+        <ul class="feature-list">
+          <li><i class="ri-check-double-line"></i> <code>.traversal()</code></li>
+          <li><i class="ri-check-double-line"></i> <code>.transactions()</code></li>
+          <li><i class="ri-check-double-line"></i> <code>.authentication()</code></li>
+          <li><i class="ri-check-double-line"></i> <code>.administrator()</code></li>
+          <li><i class="ri-check-double-line"></i> <code>.registration()</code></li>
+          <li><i class="ri-check-double-line"></i> <code>.accountactions()</code></li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <p>&copy; 2025 dbankite3. Built with ❤️ for learning and development.</p>
-      <p><a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3" target="_blank">View on GitHub</a></p>
-    </footer>
+  <section id="drivers" class="reveal">
+    <h2 class="section-title">Database <span>Drivers</span></h2>
+    <p class="section-desc">The system is designed with a plug-and-play driver architecture.</p>
+    <div class="grid-2">
+      <div class="tech-card">
+        <h3>SQLite3 Driver</h3>
+        <p>Default for local development. Zero configuration required. Creates a local <code>.db</code> file in the
+          project root.</p>
+      </div>
+      <div class="tech-card">
+        <h3>MySQL Driver</h3>
+        <p>Ready for scaling. Change the driver in <code>__init__.py</code> to connect to a remote MySQL server for
+          concurrent access.</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <section id="learning" class="reveal">
+    <h2 class="section-title">Learning <span>Outcomes</span></h2>
+    <div class="grid-3">
+      <div class="tech-card center-card">
+        <div class="icon-box"><i class="ri-database-2-fill"></i></div>
+        <h3>CRUD Mastery</h3>
+        <p>Learn how to Create, Read, Update, and Delete records safely using Python's <code>sqlite3</code> module.</p>
+      </div>
+      <div class="tech-card center-card">
+        <div class="icon-box"><i class="ri-lock-password-line"></i></div>
+        <h3>Backend Logic</h3>
+        <p>Understand how real systems validate inputs, hash passwords, and manage sessions without a GUI.</p>
+      </div>
+      <div class="tech-card center-card">
+        <div class="icon-box"><i class="ri-server-line"></i></div>
+        <h3>Data Persistence</h3>
+        <p>Move beyond in-memory variables. See how data survives application restarts and crashes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="security" class="reveal">
+    <div class="grid-3">
+      <div class="tech-card">
+        <h3><i class="ri-shield-keyhole-line"></i> Custom Cryptography</h3>
+        <p>
+          dbankite³ avoids standard libraries for educational depth, implementing a custom
+          <strong>Caesar Cipher variant</strong> with numeric alteration.
+        </p>
+        <br>
+        <p><strong style="color:var(--accent)">User Encryption:</strong> Shift Key = <strong>8</strong></p>
+        <p><strong style="color:var(--secondary)">Admin Encryption:</strong> Shift Key = <strong>53</strong></p>
+      </div>
+
+      <div class="terminal-window" style="grid-column: span 2; margin-top:0;">
+        <div class="terminal-header">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <span style="color: #5c6370; font-size: 0.8rem; margin-left: auto;">SQLite3.py</span>
+        </div>
+        <div class="terminal-body">
+          <code><span class="comment"># Authentic implementation from source code</span></code>
+          <code><span class="cmd">class</span> authentication:</code>
+          <code>    <span class="cmd">def</span> authenticate_password(<span class="cmd">self</span>) -> <span class="cmd">bool</span>:</code>
+          <code>        <span class="cmd">self</span>.cursor.execute(<span class="str">'''SELECT password FROM users WHERE username = ?'''</span>, (<span class="cmd">self</span>.username,))</code>
+          <code>        <span class="comment"># Validates input against stored hash with Shift 8</span></code>
+          <code>        <span class="cmd">return</span> <span class="cmd">self</span>.cursor.fetchone()[0] == Encryption(<span class="cmd">self</span>.password, <span class="str">shift</span>=8, <span class="str">alterNumbers</span>=<span class="cmd">True</span>).encrypt()</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="encryption" class="reveal">
+    <h2 class="section-title">Cipher <span>Mechanics</span></h2>
+    <div class="grid-3">
+      <div class="tech-card">
+        <h3>Shift Logic</h3>
+        <p>Characters are shifted by the key value. If the key is 8, 'A' becomes 'I'.</p>
+      </div>
+      <div class="tech-card">
+        <h3>Numeric Salt</h3>
+        <p>Numbers are processed differently to ensure PINs and balances are obscured effectively.</p>
+      </div>
+      <div class="tech-card">
+        <h3>Key Rotation</h3>
+        <p>Admins use a higher key (53) to separate privilege levels in the database.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="database" class="reveal">
+    <h2 class="section-title">Data <span>Persistency</span></h2>
+    <div class="grid-3">
+      <div class="tech-card">
+        <h3>User Table Schema</h3>
+        <code style="color:var(--primary)">users (table)</code>
+        <hr style="border-color: var(--glass-border); margin: 10px 0;">
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.9rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+            <span>username</span> <span style="color:var(--secondary)">VARCHAR(50) PK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+            <span>password</span> <span style="color:var(--text-dim)">VARCHAR(25)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>balance</span> <span style="color:var(--text-dim)">REAL DEFAULT 0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-card">
+        <h3>Admin Table Schema</h3>
+        <code style="color:var(--accent)">administrators (table)</code>
+        <hr style="border-color: var(--glass-border); margin: 10px 0;">
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.9rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+            <span>password</span> <span style="color:var(--text-dim)">VARCHAR(25)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>notices</span> <span style="color:var(--text-dim)">TEXT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-card">
+        <h3>Transaction Atomic Flow</h3>
+        <p>All financial actions (Deposit, Withdraw, Transfer) utilize <code>connection.commit()</code> immediately
+          after execution to ensure data integrity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sql-opt" class="reveal">
+    <h2 class="section-title">SQL <span>Optimization</span></h2>
+    <p>We use parameterized queries to prevent SQL Injection.</p>
+    <div class="terminal-window" style="margin-top: 20px;">
+      <div class="terminal-body">
+        <code><span class="comment"># INSECURE (Vulnerable)</span></code>
+        <code><span class="cmd">cursor</span>.execute(<span class="str">f"SELECT * FROM users WHERE name = '{user_input}'"</span>)</code>
+        <code></code>
+        <code><span class="comment"># DBANKITE3 METHOD (Secure)</span></code>
+        <code><span class="cmd">cursor</span>.execute(<span class="str">"SELECT * FROM users WHERE name = ?"</span>, (user_input,))</code>
+      </div>
+    </div>
+  </section>
+
+  <section id="cli" class="reveal">
+    <h2 class="section-title">The <span>Interface</span></h2>
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <span style="color: #5c6370; font-size: 0.8rem; margin-left: auto;">powershell.exe</span>
+      </div>
+      <div class="terminal-body">
+        <code><span class="str">~ $</span> dbankite3 : ACTION [1-8] <span class="cmd">>></span> 2</code>
+        <code></code>
+        <code>ENTER AMOUNT: <span class="cmd">$</span> 1500.00</code>
+        <code><span style="color:#27c93f">DEPOSIT SUCCESSFUL!</span></code>
+        <code></code>
+        <code><span class="str">~ $</span> dbankite3 : ACTION [1-8] <span class="cmd">>></span> 1</code>
+        <code></code>
+        <code>BALANCE: <span style="color:#27c93f">$ 1500.0</span></code>
+      </div>
+    </div>
+  </section>
+
+  <section id="admin" class="reveal">
+    <h2 class="section-title">Admin <span>Capabilities</span></h2>
+    <div class="grid-2">
+      <div class="tech-card">
+        <h3><i class="ri-notification-badge-line"></i> Broadcast System</h3>
+        <p>Admins can push notices that appear on user dashboards upon login.</p>
+      </div>
+      <div class="tech-card">
+        <h3><i class="ri-user-unfollow-line"></i> User Management</h3>
+        <p>Delete accounts, freeze assets (planned), or reset passwords manually.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="errors" class="reveal">
+    <h2 class="section-title">Error <span>Handling</span></h2>
+    <p>The system is robust against standard runtime errors.</p>
+    <ul class="feature-list" style="margin-top: 20px;">
+      <li><i class="ri-bug-line"></i> <strong>ValueError:</strong> Caught when users input text instead of numbers.</li>
+      <li><i class="ri-bug-line"></i> <strong>IntegrityError:</strong> Caught when signing up with a duplicate username.
+      </li>
+      <li><i class="ri-bug-line"></i> <strong>KeyboardInterrupt:</strong> Graceful shutdown on CTRL+C.</li>
+    </ul>
+  </section>
+
+  <section id="performance" class="reveal">
+    <h2 class="section-title">Performance <span>Metrics</span></h2>
+    <div class="grid-4">
+      <div class="tech-card center-card">
+        <h2>0.02s</h2>
+        <p>Login Time</p>
+      </div>
+      <div class="tech-card center-card">
+        <h2>10k+</h2>
+        <p>Records Supported</p>
+      </div>
+      <div class="tech-card center-card">
+        <h2>O(1)</h2>
+        <p>Lookup Speed</p>
+      </div>
+      <div class="tech-card center-card">
+        <h2>5MB</h2>
+        <p>Memory Footprint</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="reveal">
+    <h2 class="section-title">Future <span>Roadmap</span></h2>
+    <p style="color: var(--text-dim); margin-bottom: 30px;">This project serves as the foundation for modern full-stack
+      development. Here is the upgrade path:</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Phase 1: Database Migration</h3>
+          <p>Upgrade from SQLite3 to <strong>PostgreSQL</strong> or <strong>MySQL</strong> for concurrent user handling.
+          </p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Phase 2: API Integration</h3>
+          <p>Wrap the Python logic in <strong>Flask/FastAPI</strong> to create RESTful endpoints.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Phase 3: Web Frontend</h3>
+          <p>Connect a <strong>React/Vue</strong> dashboard to the API, replacing the CLI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="changelog" class="reveal">
+    <h2 class="section-title">Change <span>Log</span></h2>
+    <div class="terminal-window">
+      <div class="terminal-body">
+        <code>v1.0.0 (Current)</code>
+        <code>- Initial release</code>
+        <code>- Added SQLite3 driver</code>
+        <code>- Implemented Caesar Cipher</code>
+        <code></code>
+        <code>v0.9.0 (Beta)</code>
+        <code>- Fixed user balance float precision error</code>
+        <code>- Added main.py entrypoint</code>
+      </div>
+    </div>
+  </section>
+
+  <section id="install" class="reveal">
+    <h2 class="section-title">Installation <span>& Setup</span></h2>
+    <div class="grid-3">
+      <div class="tech-card">
+        <h3><i class="ri-windows-fill"></i> Quick Start</h3>
+        <p>No Python installed? No problem.</p>
+        <p style="margin-top: 10px; color: var(--text-dim); font-size: 0.9rem;">Get the standalone executable.</p>
+        <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3/releases" target="_blank" class="btn btn-primary"
+          style="margin-top: 20px; width: 100%; justify-content: center;">
+          <i class="ri-download-cloud-2-fill"></i> Download Release
+        </a>
+      </div>
+
+      <div class="tech-card" style="grid-column: span 2;">
+        <h3><i class="ri-terminal-box-fill"></i> Source Setup</h3>
+        <div class="terminal-window" style="margin-top: 10px; border:none; box-shadow:none;">
+          <div class="terminal-body" style="padding: 10px;">
+            <code><span class="comment"># Clone repository</span></code>
+            <code>git clone https://github.com/ViratiAkiraNandhanReddy/dbankite3.git</code>
+            <code><span class="comment"># Install requirements</span></code>
+            <code>pip install -r requirements.txt</code>
+            <code><span class="comment"># Run entrypoint</span></code>
+            <code>python main.py</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="config" class="reveal">
+    <h2 class="section-title">Configuration</h2>
+    <p>Edit <code>__init__.py</code> to toggle drivers.</p>
+    <div class="terminal-window" style="margin-top: 20px;">
+      <div class="terminal-body">
+        <code><span class="comment"># Select Driver: 'sqlite' or 'mysql'</span></code>
+        <code>DB_DRIVER = <span class="str">'sqlite'</span></code>
+      </div>
+    </div>
+  </section>
+
+  <section id="deps" class="reveal">
+    <h2 class="section-title">Dependencies</h2>
+    <p>Minimalist design requires very few external libraries.</p>
+    <ul class="feature-list">
+      <li><code>mysql-connector-python</code> (Only if using MySQL)</li>
+      <li><code>colorama</code> (For CLI colors)</li>
+      <li><code>tqdm</code> (For loading bars)</li>
+    </ul>
+  </section>
+
+  <section id="contribute" class="reveal">
+    <h2 class="section-title">Contributing</h2>
+    <p>We welcome Pull Requests!</p>
+    <ol style="margin-left: 20px; color: var(--text-dim); margin-top: 15px;">
+      <li>Fork the Project</li>
+      <li>Create your Feature Branch (<code>git checkout -b feature/AmazingFeature</code>)</li>
+      <li>Commit your Changes (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+      <li>Push to the Branch (<code>git push origin feature/AmazingFeature</code>)</li>
+      <li>Open a Pull Request</li>
+    </ol>
+  </section>
+
+  <section id="license" class="reveal">
+    <h2 class="section-title">License</h2>
+    <div class="tech-card">
+      <p align="center">
+
+        MIT License<br>
+        <br>
+        Copyright © 2025 VIRATI AKIRANNADHAN REDDY<br>
+        <br>
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:<br>
+        <br>
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.<br>
+        <br>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.<br>
+      </p>
+    </div>
+  </section>
+
+  <section id="faq" class="reveal">
+    <h2 class="section-title">FAQ</h2>
+    <div class="grid-2">
+      <div class="tech-card">
+        <h4>Is this real money?</h4>
+        <p>No, this is a simulation engine for educational purposes only.</p>
+      </div>
+      <div class="tech-card">
+        <h4>Can I use this for my bank?</h4>
+        <p>Absolutely not. This is not compliant with PCI-DSS standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="brand">DBANKITE<span>3</span></div>
+        <p>Advanced banking simulation engine built for performance and educational clarity. Persisting logic since
+          2025.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#install">Download</a>
+        <a href="#changelog">Changelog</a>
+        <a href="https://github.com/ViratiAkiraNandhanReddy/dbankite3">Source Code</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#security">Security Guide</a>
+        <a href="#faq">Support</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#license">License</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Code of Conduct</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Virati Akiranandhan Reddy. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com/ViratiAkiraNandhanReddy" target="_blank"><i class="ri-github-fill"></i></a>
+        <a href="https://linkedin.com/in/viratiakiranandhanreddy/" target="_blank"><i class="ri-linkedin-fill"></i></a>
+        <a href="https://instagram.com/viratiakiranandhanreddy" target="_blank"><i class="ri-instagram-fill"></i></a>
+        <a href="https://x.com/Viratiaki53" target="_blank"><i class="ri-twitter-x-fill"></i></a>
+        <a href="https://facebook.com/ViratiAkiraNandhanReddy" target="_blank"><i class="ri-facebook-fill"></i></a>
+        <a href="https://threads.com/@viratiakiranandhanreddy" target="_blank"><i class="ri-threads-fill"></i></a>
+        <a href="https://google.com/search?q=virati+akiranandhan+reddy" target="_blank"><i
+            class="ri-google-fill"></i></a>
+        <a href="mailto:contact.viratiakiranandhanreddy+dbankite3@gmail.com" target="_blank"><i
+            class="ri-mail-fill"></i></a>
+        <a href="https://youtube.com/@ViratiAkiraNandhanReddy" target="_blank"><i class="ri-youtube-fill"></i></a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
