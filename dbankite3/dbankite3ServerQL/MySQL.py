@@ -88,7 +88,7 @@ class dbankite3ServerQL:
             self.cursor.execute('''
                 SELECT password FROM users WHERE username = %s
             ''', (self.username,))
-            return self.cursor.fetchone()[0] == Encryption(self.password, shift = 8, alterNumbers = True).encrypt()
+            return self.cursor.fetchone()[0] == Encryption(self.password, shift = 8, alterNumbers = True).encrypt()  # type: ignore  -->  escaping type checker warning.
 
     class traversal:
 
@@ -102,14 +102,14 @@ class dbankite3ServerQL:
             self.cursor.execute('''
                 SELECT COUNT(*) FROM users WHERE username = %s
             ''', (username,))
-            return self.cursor.fetchone()[0] > 0
+            return self.cursor.fetchone()[0] > 0  # type: ignore  -->  escaping type checker warning.
 
         def fetch_all_users(self) -> list[tuple]:
             """Return a list of (username, balance) tuples for all users."""
             self.cursor.execute('''
                 SELECT username, balance FROM users
             ''')
-            return self.cursor.fetchall()
+            return self.cursor.fetchall()  # type: ignore  -->  escaping type checker warning.
 
     class registration:
 
@@ -181,7 +181,7 @@ class dbankite3ServerQL:
                 SELECT balance FROM users WHERE username = %s
             ''', (username,))
             balance = self.cursor.fetchone()
-            return balance[0] if balance else 0.0
+            return balance[0] if balance else 0.0  # type: ignore  -->  escaping type checker warning.
 
         def deposit(self, username: str, amount: float) -> bool:
             """Add `amount` to the user's balance. Returns True on success."""
@@ -225,7 +225,7 @@ class dbankite3ServerQL:
                 SELECT password FROM administrators LIMIT 1
             ''')
 
-            return self.cursor.fetchone()[0] == Encryption(admin_password, shift = 53, alterNumbers = True).encrypt()
+            return self.cursor.fetchone()[0] == Encryption(admin_password, shift = 53, alterNumbers = True).encrypt()  # type: ignore  -->  escaping type checker warning.
         
         def change_password(self, _password: str) -> bool:
             """Change the administrator password. Returns True on success."""
@@ -249,7 +249,7 @@ class dbankite3ServerQL:
             self.cursor.execute('''
                 SELECT notices FROM administrators LIMIT 1
             ''')
-            return self.cursor.fetchone()[0]
+            return self.cursor.fetchone()[0]  # type: ignore  -->  escaping type checker warning.
         
         def delete_all_user_accounts(self) -> bool:
             """Remove all user records. Returns True when rows were deleted."""
