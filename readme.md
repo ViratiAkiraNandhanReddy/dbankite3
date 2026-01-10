@@ -4,7 +4,8 @@
     <img src="https://api.visitorbadge.io/api/visitors?path=ViratiAkiraNandhanReddy/dbankite3&label=Repository%20Visits&style=flat" alt="Visits" />
     <img src="https://img.shields.io/github/stars/ViratiAkiraNandhanReddy/dbankite3?style=social" alt="Stars" />
     <img src="https://img.shields.io/badge/python-3.13-blue?logo=python&logoColor=white" alt="Python" />
-    <img src="https://img.shields.io/badge/database-SQLite3-003B57?logo=sqlite&logoColor=white" alt="SQLite3" />
+    <img src="https://img.shields.io/badge/SQLite3-003B57?logo=sqlite&logoColor=white" alt="SQLite3" />
+    <img src="https://img.shields.io/badge/MySQL-003B57?logo=mysql&logoColor=white" alt="SQLite3" />
     </a>
 
   <h1 align="center"><a href="https://viratiakiranandhanreddy.github.io/dbankite3">dbankite3</a></h1>
