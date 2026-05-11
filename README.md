@@ -201,6 +201,6 @@ To contribute:
 
 ---
 
-<h3 align="center"> 🌟 Questions, suggestions, or want to contribute? Open an issue or pull request on GitHub! 🌟 </h3>
+<h3 align="center">Questions, suggestions, or want to contribute? Open an issue or pull request on GitHub!</h3>
 
 <p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0e8fff&height=100&section=footer" width="100%" /> </p>
