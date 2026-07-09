@@ -1,2 +1,2 @@
-caesarcipher-extended
+git+https://github.com/ViratiAkiraNandhanReddy/CaesarCipher.extended-python.pypi
 mysql-connector-python
